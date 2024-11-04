@@ -1,5 +1,10 @@
-# Working with Workspaces/Modules/Variables/Remotebackend
+# Automated EC2 instance provisioning with terraform
 
+## MVPS
+ - Terraform is an IaC open source tool.
+ - Have utilised it to create the virtual machine instead of doing it on AWS management console.
+ - The project covers; workspaces, modules, remote backend and variables.
+ 
 ### Workspaces are used when managing multiple environments in a single infranstructure.
  - Lets say we have 3 env; dev, stage and prod and the type of instances is different for all of them how will you do this? Workspaces come in now. 
  - To create a workspace you run ```terraform workspace new``` to switch to a particular workspace run ```terraform workspace select```.
