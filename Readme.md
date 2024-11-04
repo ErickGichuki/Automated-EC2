@@ -9,7 +9,7 @@ This project utilizes Terraform, an open-source Infrastructure as Code(IaC) tool
  - Modular Architecture.
  - Dynamic configuration.
    
-### Workspaces are used when managing multiple environments in a single infranstructure.
+### Workspaces
 Workspaces enable the management of different environments using a single Terraform configuration.
 In this project we have 3 environments; 
  - Development(dev): instance type is t2.micro
@@ -26,5 +26,5 @@ This setup ensures that the terraform state file is not stored locally but secur
 For efficient resource management, the project organizes resources into modules.
 The EC2 module is referenced in the main.tf file, allowing for clean and maintainable code while adhering to the principle of separation of concerns.
 
-### Input and Output Variable
+### Input and Output Variables
 The project employs input and output variables to parameterize critical setting such as AMI and instance type. This approach enhances the flexibility of the configuration and simplifies adjustments without modifying the core codebases.
