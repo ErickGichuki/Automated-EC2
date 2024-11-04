@@ -1,22 +1,30 @@
-# Automated EC2 instance provisioning with terraform
+# Automated EC2 Instance Provisioning with Terraform
+
+## Overview
+This project utilizes Terraform, an open-source Infrastructure as Code(IaC) tool, to automate the provisioning EC2 instances across multiples environments, enhancing efficiency and consistency compared to maual setups through the AWS management console.
 
 ## MVPS
- - Terraform is an IaC open source tool.
- - Have utilised it to create the virtual machine instead of doing it on AWS management console.
- - The project covers; workspaces, modules, remote backend and variables.
- 
+ - Terraform workspaces.
+ - Remote backend.
+ - Modular Architecture.
+ - Dynamic configuration.
+   
 ### Workspaces are used when managing multiple environments in a single infranstructure.
- - Lets say we have 3 env; dev, stage and prod and the type of instances is different for all of them how will you do this? Workspaces come in now. 
- - To create a workspace you run ```terraform workspace new``` to switch to a particular workspace run ```terraform workspace select```.
- - For this particular project we'll have 3 environments where 3 instances will be created.
+Workspaces enable the management of different environments using a single Terraform configuration.
+In this project we have 3 environments; 
+ - Development(dev): instance type is t2.micro
+ - Staging(stage): t2.medium instance.
+ - Production(prod): t2.xlarge instance.
+ - To create a new workspace run ```terraform workspace new <workspace_name>```.
+ - To switch to a particular workspace run ```terraform workspace select <workspace_name>```.
 
 ### Remote Backend
- - We understand that sensitive information should not be shared to the public and therefore handled in a good way. I have implemented remote backend with s3 bucket.
- - By doing this terraform state won't be stored locally in a statefile but in an s3 bucket.
+To safeguard sensitive information, the project implements a remote backend using an S3 bucket.
+This setup ensures that the terraform state file is not stored locally but securely in S3, facilitating collaboration and preventing data loss.
 
 ### Modules
- - In a scenario where you're creating a couple of resources its a good practice to bring in the concept of separation of concerns. I have separated resources in modules form.
- - We have an ec2 modules which we just need to reference in the main.tf which is in the same directory with the modules folder.
+For efficient resource management, the project organizes resources into modules.
+The EC2 module is referenced in the main.tf file, allowing for clean and maintainable code while adhering to the principle of separation of concerns.
 
 ### Input and Output Variable
- - Have parametired the ami and instance type for dynamic purposes instead of hardcoding the values
+The project employs input and output variables to parameterize critical setting such as AMI and instance type. This approach enhances the flexibility of the configuration and simplifies adjustments without modifying the core codebases.
